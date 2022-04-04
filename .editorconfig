@@ -2,12 +2,11 @@ root = true
 
 [*]
 indent_style = space
-# Если предпочитаете отступы в 4 пробела в html/css/js, заменить тут 2 на 4
 indent_size = 2
-charset = utf-8
+end_of_line = lf
 trim_trailing_whitespace = true
-insert_final_newline = false
+insert_final_newline = true
+charset = utf-8
 
-
-[*.{json,md,yaml}]
-indent_size = 2
+[*.md]
+trim_trailing_whitespace = false
