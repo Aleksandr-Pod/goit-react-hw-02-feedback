@@ -11,35 +11,22 @@ export class App extends React.Component {
     bad: 0
   };
   countTotalFeedback = () => {
-    return (this.state.good + this.state.neutral + this.state.bad);
-    //         // Если в стейте заранее не известно количество свойств:
-    // let total=0;
-    //   for (const key in this.state) {
-    //     total += this.state[key]
-    //   }
-    //   return total;
+    // return (this.state.good + this.state.neutral + this.state.bad); // Хардкор
+    return Object.values(this.state).reduce((total, el) => total + el, 0); // для любого кол-ва
   }
   countPositiveFeedbackPercentage = () => {
     return (this.state.good / this.countTotalFeedback() * 100);
   }
   
   onFeedbackHandle = (evt) => {
-    const btnName = evt.currentTarget.name;
-    this.setState(prev => ({ [btnName]: (prev[btnName] + 1) }))
-    console.log(this.state);
+    const stateName = evt.currentTarget.name;
+    this.setState(prev => ({ [stateName]: prev[stateName] + 1 }))
   }
   render() {
-    const btns = ["Good", "Neutral", "Bad"];
-    //        // Если не известно сколько будет кнопок
-    // const btns = [];
-    // for (const key in this.state) {
-    //   btns.push(key.charAt(0).toUpperCase() + key.slice(1))
-    // }
-    
     return (
       <div>
         <Section title="Please leave feedback">
-          <FeedbackOptions options={btns} onLeaveFeedback={this.onFeedbackHandle}/>
+          <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.onFeedbackHandle}/>
         </Section>
         
         <Section title="Statistics">
