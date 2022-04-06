@@ -19,8 +19,9 @@ export class App extends React.Component {
   }
   
   onFeedbackHandle = (evt) => {
+
     const stateName = evt.currentTarget.name;
-    this.setState(prev => ({ [stateName]: prev[stateName] + 1 }))
+    this.setState(prev => ({ [stateName]: prev[stateName] + 1 }));
   }
   render() {
     return (
