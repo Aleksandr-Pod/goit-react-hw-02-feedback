@@ -1,10 +1,11 @@
-import React from 'react';
+import {Component} from 'react';
 import Statistics from './Statistics';
 import FeedbackOptions from "./FeedbackOptions";
 import Section from './Section';
 import Notification from './Notification';
+import PropTypes from 'prop-types';
 
-export class App extends React.Component {
+export class App extends Component {
   state = {
     good: 0,
     neutral: 0,
@@ -43,3 +44,7 @@ export class App extends React.Component {
     );
   }
 };
+FeedbackOptions.propTypes = {
+  options: PropTypes.array,
+  onLeaveFeedback: PropTypes.func
+}
