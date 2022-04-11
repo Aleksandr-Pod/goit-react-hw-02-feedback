@@ -1,4 +1,5 @@
-import { Options } from "./Feedback.styled"
+import { Options } from "./Feedback.styled";
+import PropTypes from 'prop-types';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
     return (
@@ -8,4 +9,8 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
       ))}
     </>
     )
+}
+FeedbackOptions.propTypes = {
+  options: PropTypes.array,
+  onLeaveFeedback: PropTypes.func
 }
